@@ -2,16 +2,19 @@
 
 namespace App\Tests\EntityDummies;
 
-use App\Entity\Category;
 
-class CategoryMother 
+use App\Domain\Product\Category;
+use App\Domain\Product\CategoryId;
+use App\Domain\Product\CategoryName;
+
+class CategoryMother
 {
     public static function createCategory(int $id, string $name): Category
     {
-        $cat = new Category();
-        $cat->setId($id)
-        ->setName($name);
-        return $cat;
+        return new Category(
+            new CategoryId($id),
+            new CategoryName($name)
+        );
     }
 
     public static function randomCategory(): Category

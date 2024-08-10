@@ -2,24 +2,39 @@
 
 namespace App\Tests\EntityDummies;
 
-use App\Entity\Discount;
+use App\Domain\Discount\Discount;
+use App\Domain\Discount\DiscountId;
+use App\Domain\Discount\DiscountType;
+use App\Domain\Discount\Percentage;
+use App\Domain\Product\CategoryId;
+use App\Domain\Product\ProductId;
+use App\Domain\Shared\EntityId;
 
 class DiscountMother
 {
-    public static function createDiscount(string $type, int $typeId, int $percentage): Discount {
-        $dis = new Discount();
-        $dis->setId(mt_rand(1,100))
-            ->setDiscountType($type)
-            ->setDiscountTypeId($typeId)
-            ->setPercentage($percentage);
-        return $dis;
+    private static function createDiscount(DiscountType $type, EntityId $typeId, Percentage $percentage): Discount {
+        return new Discount(
+            new DiscountId(mt_rand(1, 100)),
+            $type,
+            $typeId,
+            $percentage
+
+        );
     }
 
     public static function createDiscountCategory(int $categoryId, int $percentage) : Discount {
-        return self::createDiscount('category', $categoryId, $percentage);
-    }   
+        return self::createDiscount(
+            DiscountType::Category,
+            new CategoryId($categoryId),
+            new Percentage($percentage)
+        );
+    }
 
-    public static function createDiscountSku(int $skuId, int $percentage) : Discount {
-        return self::createDiscount('sku', $skuId, $percentage);
-    }   
+    public static function createDiscountSku(int $productId, int $percentage) : Discount {
+        return self::createDiscount(
+            DiscountType::Product,
+            new ProductId($productId),
+            new Percentage($percentage)
+        );
+    }
 }

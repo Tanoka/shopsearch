@@ -18,8 +18,8 @@ RUN apt -y install git
 RUN pecl install xdebug-3.2.1 \
 	&& docker-php-ext-enable xdebug
 
-WORKDIR /var/www/mytheresa
-COPY . /var/www/mytheresa
+WORKDIR /var/www/myproduct
+COPY . /var/www/myproduct
 
 ENV COMPOSER_ALLOW_SUPERUSER=1
 RUN composer install --no-interaction 

@@ -2,6 +2,9 @@
 .devcontainer
 .vscode
 
+# phpstorm
+.idea
+
 ###> symfony/framework-bundle ###
 /.env.local
 /.env.local.php

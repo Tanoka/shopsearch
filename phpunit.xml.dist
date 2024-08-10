@@ -19,7 +19,9 @@
 
     <coverage processUncoveredFiles="true">
         <include>
-            <directory suffix=".php">src</directory>
+            <directory suffix=".php">src/Domain</directory>
+            <directory suffix=".php">src/Application</directory>
+            <directory suffix=".php">src/Infrastructure/Repository</directory>
         </include>
         <report>
             <text outputFile="var/coverage.txt"/>
@@ -28,12 +30,12 @@
 
     <testsuites>
         <testsuite name="domain_unit_test">
-            <directory>tests/Service/Unit</directory>
+            <directory>tests/Domain</directory>
+            <directory>tests/Domain/Product/Unit</directory>
         </testsuite>
         <testsuite name="integration_test">
-            <directory>tests/Repository</directory>
+            <directory>tests/Infrastructure/Repository</directory>
             <directory>tests/Application</directory>
-            <directory>tests/Service/Integration</directory>
         </testsuite>
     </testsuites>
 

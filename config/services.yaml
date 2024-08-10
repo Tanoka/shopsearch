@@ -17,8 +17,8 @@ services:
         resource: '../src/'
         exclude:
             - '../src/DependencyInjection/'
-            - '../src/Entity/'
-            - '../src/Service/ProductResponse.php'
+            - '../src/Infrastructure/Entity/'
+            - '../src/Domain/Product/ProductResponse.php'
             - '../src/Kernel.php'
 
     App\Fixtures\:

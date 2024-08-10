@@ -2,9 +2,9 @@
 
 namespace App\Fixtures;
 
-use App\Entity\Category;
-use App\Entity\Discount;
-use App\Entity\Product;
+use App\Infrastructure\Entity\Category;
+use App\Infrastructure\Entity\Discount;
+use App\Infrastructure\Entity\Product;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Bundle\FixturesBundle\FixtureGroupInterface;
 use Doctrine\Persistence\ObjectManager;

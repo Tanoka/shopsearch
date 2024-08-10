@@ -2,9 +2,10 @@
 
 namespace App\Fixtures;
 
-use App\Entity\Category;
-use App\Entity\Discount;
-use App\Entity\Product;
+use App\Domain\Discount\DiscountType;
+use App\Infrastructure\Entity\Category;
+use App\Infrastructure\Entity\Discount;
+use App\Infrastructure\Entity\Product;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Bundle\FixturesBundle\FixtureGroupInterface;
 use Doctrine\Persistence\ObjectManager;
@@ -62,14 +63,14 @@ class AppFixtures extends Fixture implements FixtureGroupInterface
 
         // Discount in sku 000002
         $discount1 = (new Discount())
-            ->setDiscountType('sku')
+            ->setDiscountType(DiscountType::Product->value)
             ->setDiscountTypeId($products[1]->getId())
             ->setPercentage(3000);
         $manager->persist($discount1);
          
         //Discount in boots category    
         $discount2 = (new Discount())
-            ->setDiscountType('category')
+            ->setDiscountType(DiscountType::Category->value)
             ->setDiscountTypeId($category1->getId())
             ->setPercentage(1500);
 
